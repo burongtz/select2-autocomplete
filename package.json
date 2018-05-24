@@ -1,0 +1,27 @@
+{
+  "name": "select2-autocomplete",
+  "version": "1.0.0",
+  "description": "A jQuery plugin to autocomplete, useful in searches.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burongtz/select2-autocomplete.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/burongtz/select2-autocomplete/issues"
+  },
+  "homepage": "https://github.com/burongtz/select2-autocomplete#readme",
+  "devDependencies": {
+    "laravel-mix": "^2.1.11",
+    "select2": "^4.0.6-rc.1"
+  }
+}
