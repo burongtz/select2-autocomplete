@@ -136,4 +136,4 @@
 
         return this;
     };
-});
+}(jQuery));
