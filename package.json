@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/burongtz/select2-autocomplete#readme",
   "devDependencies": {
-    "laravel-mix": "^2.1.11",
-    "select2": "^4.0.6-rc.1"
+    "laravel-mix": "^2.1.11"
   }
 }
