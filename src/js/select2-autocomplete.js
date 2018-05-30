@@ -31,15 +31,18 @@
  * Use when records are inside other key { 'data' : {} }
  */
 
+ import each from './each'
+
 (function ($) {
     "use strict";
+
     $.fn.select2Autocomplete = function (options) {
         var defaults = $.extend({}, {
             withTags: true,
             optionValue: 'name',
             optionText: 'name',
             filterBy: '',
-            requestUrl: 'asd',
+            requestUrl: '',
             responseData: '',
             ajaxDelay: 250,
             ajaxCache: true
@@ -49,24 +52,28 @@
          * 
          * @param {*}  
          */
-        function updateSettings($self) {
+        function createSettings($self) {
             var data = $self.data();
             var settings = $.extend(true, {}, defaults);
 
-            _.forEach(data, function (v, k) {
+            each(data, function (v, k) {
                 settings[k] = v;
             });
-
             $self.data('settings', settings);
-            return settings;
+        }
+
+        function getSettings($self)
+        {
+            return $self.data('settings');
         }
 
         /**
          * 
          * @param {*} settings 
          */
-        function createAjaxConfig(settings) {
+        function createAjaxConfig($self) {
             var ajaxConfig = {};
+            var settings = getSettings($self);
 
             ajaxConfig['url'] = settings.requestUrl;
             ajaxConfig['dataType'] = 'json';
@@ -120,8 +127,8 @@
 
             $self.select2({
                 tags: settings.withTags,
-                minimumInputLength: 1, // minimun chars to start request
-                ajax: createAjaxConfig(settings)
+                minimumInputLength: 2, // minimun chars to start request
+                ajax: createAjaxConfig($self)
             });
         }
 
@@ -130,8 +137,8 @@
          */
         this.each(function () {
             var $self = $(this);
-            var settings = updateSettings($self);
-            initializeSelect2($self, settings);
+            createSettings($self);
+            initializeSelect2($self, getSettings($self));
         });
 
         return this;
