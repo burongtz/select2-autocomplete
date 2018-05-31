@@ -128,7 +128,12 @@
             $self.select2({
                 tags: settings.withTags,
                 minimumInputLength: 2, // minimun chars to start request
-                ajax: createAjaxConfig($self)
+                ajax: createAjaxConfig($self),
+                insertTag: function (data, tag) { // TODO: improve if it possible
+                    if (data.length > 0) {
+                        data.unshift(tag);
+                    }
+                }
             });
         }
 
