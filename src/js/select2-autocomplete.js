@@ -31,13 +31,14 @@
  * Use when records are inside other key { 'data' : {} }
  */
 
- import each from './each'
+ import each from './each';
+ import Autocomplete from './Autocomplete'
 
 (function ($) {
     "use strict";
 
     $.fn.select2Autocomplete = function (options) {
-        var defaults = $.extend({}, {
+        let defaults = $.extend({}, {
             withTags: true,
             optionValue: 'name',
             optionText: 'name',
@@ -49,101 +50,13 @@
         }, options);
 
         /**
-         * 
-         * @param {*}  
-         */
-        function createSettings($self) {
-            var data = $self.data();
-            var settings = $.extend(true, {}, defaults);
-
-            each(data, function (v, k) {
-                settings[k] = v;
-            });
-            $self.data('settings', settings);
-        }
-
-        function getSettings($self)
-        {
-            return $self.data('settings');
-        }
-
-        /**
-         * 
-         * @param {*} settings 
-         */
-        function createAjaxConfig($self) {
-            var ajaxConfig = {};
-            var settings = getSettings($self);
-
-            ajaxConfig['url'] = settings.requestUrl;
-            ajaxConfig['dataType'] = 'json';
-            ajaxConfig['delay'] = settings.ajaxDelay;
-            ajaxConfig['cache'] = settings.ajaxCache;
-
-            ajaxConfig['data'] = function (params) {
-                var data = {};
-                if (settings.filterBy) {
-                    data[settings.filterBy] = params.term;
-                }
-                return data;
-            };
-
-            ajaxConfig['processResults'] = function (data) {
-                var result = null;
-
-                if (settings.responseData) {
-                    result = data[settings.responseData];
-                } else {
-                    result = data;
-                }
-
-                return {
-                    results: $.map(result, function (item) {
-                        item.id = item[settings.optionValue];
-                        item.text = item[settings.optionText];
-                        return item;
-                    })
-                };
-            };
-
-            return ajaxConfig;
-        }
-
-        /**
-         * 
-         * @param {*}  
-         * @param {*} settings 
-         */
-        function initializeSelect2($self, settings) {
-            // Create an empty option to
-            // fire on change when is first time as tag.
-            // TODO: improve this.
-            $self.html(
-                $('<option>', {
-                    value: '',
-                    text: ''
-                })
-            );
-
-            $self.select2({
-                tags: settings.withTags,
-                minimumInputLength: 2, // minimun chars to start request
-                ajax: createAjaxConfig($self),
-                insertTag: function (data, tag) { // TODO: improve if it possible
-                    if (data.length > 0) {
-                        data.unshift(tag);
-                    }
-                }
-            });
-        }
-
-        /**
          * Main
          */
         this.each(function () {
-            var $self = $(this);
-            createSettings($self);
-            initializeSelect2($self, getSettings($self));
+            let autocomplete = new Autocomplete(this, defaults);
+            autocomplete.updateSettings();
+            autocomplete.setDataSettings(autocomplete.settings);
+            autocomplete.render();
         });
 
         return this;
