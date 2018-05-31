@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"
+          rel="stylesheet">
+    <style>
+        .search {
+            min-width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- https://github.com/burongtz/select2-autocomplete -->
+
+    <select class="search"
+            data-option-value="name"
+            data-option-text="name"
+            data-request-url="https://jsonplaceholder.typicode.com/users"></select>
+
+    <br>
+    <br>
+
+    <select class="search"
+            data-option-value="id"
+            data-option-text="name"
+            data-with-tags="false"
+            data-request-url="https://jsonplaceholder.typicode.com/users"></select>
+
+    <!-- <select class="search"
+        data-option-value="id"
+        data-option-text="name"
+        data-filter-by="name"
+        data-response-data="data"
+        data-request-url="https://jsonplaceholder.typicode.com/users"
+        data-ajax-delay="250"
+        data-ajax-cache="true"></select> -->
+
+    <br>
+    <br>
+
+    <p id="value-selected"></p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="/js/select2-autocomplete.js"></script>
+    <script>
+        $(function() {
+            $('.search').select2Autocomplete();
+        });
+    </script>
+</body>
+</html>
