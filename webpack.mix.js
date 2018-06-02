@@ -13,3 +13,11 @@ let mix = require('laravel-mix');
 
 mix.js('src/js/select2-autocomplete.js', 'dist/js')
    .setPublicPath('dist');
+
+mix.webpackConfig({
+    output: {
+        library: 'select2-autocomplete',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
+    }
+});
