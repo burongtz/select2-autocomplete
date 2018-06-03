@@ -14,13 +14,15 @@
     "url": "git+https://github.com/burongtz/select2-autocomplete.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Javier Burón Gutiérrez",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/burongtz/select2-autocomplete/issues"
   },
   "homepage": "https://github.com/burongtz/select2-autocomplete#readme",
   "devDependencies": {
-    "laravel-mix": "^2.1.11"
+    "jquery": "^3.3.1",
+    "laravel-mix": "^2.1.11",
+    "select2": "^4.0.6-rc.1"
   }
 }

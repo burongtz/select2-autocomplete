@@ -1,1 +1,398 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define("select2-autocomplete",[],t):"object"==typeof exports?exports["select2-autocomplete"]=t():e["select2-autocomplete"]=t()}("undefined"!=typeof self?self:this,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){for(var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0,t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,n=0;n<e&&!1!==t(n);n++);};var o=function(e,t){var n=function(e){var t=[];for(var n in e)e.hasOwnProperty(n)&&t.push(n);return t}(e);r(n.length,function(r){var o=n[r],a=e[o];t(a,o)})},a=null,i={};function u(e){var t={};return i.filterBy&&(t[i.filterBy]=e.term),t}function s(e){var t=null;return t=i.responseData?e[i.responseData]:e,{results:$.map(t,function(e){return e.id=e[i.optionValue],e.text=e[i.optionText],e})}}function l(){a.html($("<option>",{value:"",text:""})),a.select2({tags:i.withTags,minimumInputLength:2,ajax:{url:i.requestUrl,delay:i.ajaxDelay,cache:i.ajaxCache,dataType:"json",data:u,processResults:s},insertTag:function(e,t){e.length>0&&e.unshift(t)}})}var c=function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};a=e,i=t,l()},f=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}();var p=function(){function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:null,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.element=t,this.$element=$(t),this.defaults=n,this.settings=$.extend(!0,{},n)}return f(e,[{key:"setDataSettings",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.$element.data("settings",e)}},{key:"updateSettings",value:function(){var e=this,t=e.$element.data();e.settings={},o(t,function(t,n){e.settings[n]=t})}},{key:"render",value:function(){c(this.$element,this.settings)}}]),e}();!function(e){e.fn.select2Autocomplete=function(t){var n=e.extend({},{withTags:!0,optionValue:"name",optionText:"name",filterBy:"",requestUrl:"",responseData:"",ajaxDelay:250,ajaxCache:!0},t);return this.each(function(){var e=new p(this,n);e.updateSettings(),e.setDataSettings(e.settings),e.render()}),this}}(jQuery)}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("Select2"));
+	else if(typeof define === 'function' && define.amd)
+		define("select2-autocomplete", ["Select2"], factory);
+	else if(typeof exports === 'object')
+		exports["select2-autocomplete"] = factory(require("Select2"));
+	else
+		root["select2-autocomplete"] = factory(root["Select2"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_6__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__repeat__ = __webpack_require__(3);
+
+
+/**
+ * Get object keys.
+ * @param Object obj
+ */
+function getObjectKeys(obj) {
+    var ret = [];
+
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            ret.push(key);
+        }
+    }
+
+    return ret;
+}
+
+/**
+ * Iterate each element of object.
+ * @param {Object} obj
+ * @param {function} cb
+ */
+function each(obj, cb) {
+    var keys = getObjectKeys(obj);
+
+    Object(__WEBPACK_IMPORTED_MODULE_0__repeat__["a" /* default */])(keys.length, function (index) {
+        var key = keys[index];
+        var element = obj[key];
+        cb(element, key);
+    });
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (each);
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(2);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__each__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Autocomplete__ = __webpack_require__(4);
+/**
+ * Rqeuired libs:
+ *   - https://jquery.com/ and https://select2.org
+ *
+ * The HTML:
+ * 
+ * <select class="search"
+ *      data-option-value="name"
+ *      data-option-text="name"
+ *      data-filter-by="name"
+ *      data-response-data="data"
+ *      data-request-url="https://jsonplaceholder.typicode.com/users"
+ *      data-ajax-delay="250"
+ *      data-ajax-cache="true"></select>
+ *
+ * Dictionary:
+ * 
+ * [data-option-value]
+ * This value is a key from JSON response and will attribute value of <option value="___"></option>
+ *
+ * [data-option-text]
+ * This value is a key from JSON response and will text shown in select <option>___</option>
+ *
+ * [data-request-url]
+ * This value is the endpoint to request a JSON
+ *
+ * [data-filter-by]
+ * This is going to be added after url "dominio.com?___=
+ * 
+ * [data-response-data]
+ * Use when records are inside other key { 'data' : {} }
+ */
+
+
+
+
+(function ($) {
+    "use strict";
+
+    $.fn.select2Autocomplete = function (options) {
+        var defaults = $.extend({}, {
+            withTags: true,
+            optionValue: 'name',
+            optionText: 'name',
+            filterBy: '',
+            requestUrl: '',
+            responseData: '',
+            ajaxDelay: 250,
+            ajaxCache: true
+        }, options);
+
+        /**
+         * Main
+         */
+        this.each(function () {
+            var autocomplete = new __WEBPACK_IMPORTED_MODULE_1__Autocomplete__["a" /* default */](this, defaults);
+            autocomplete.updateSettings();
+            autocomplete.setDataSettings(autocomplete.settings);
+            autocomplete.render();
+        });
+
+        return this;
+    };
+})(jQuery);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * Repeat
+ * @param integer size 
+ * @param function cb - callback
+ */
+var repeat = function repeat() {
+    var size = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    var cb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+    for (var index = 0; index < size; index++) {
+        if (cb(index) === false) {
+            break;
+        }
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (repeat);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__each__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__initialize_select2__ = __webpack_require__(5);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+var Autocomplete = function () {
+    function Autocomplete() {
+        var element = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+        var defaults = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+        _classCallCheck(this, Autocomplete);
+
+        this.element = element;
+        this.$element = $(element);
+        this.defaults = defaults;
+        this.settings = $.extend(true, {}, defaults);
+    }
+
+    /**
+     * Save settings in Data.
+     * @param Object settings - {}
+     */
+
+
+    _createClass(Autocomplete, [{
+        key: 'setDataSettings',
+        value: function setDataSettings() {
+            var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            this.$element.data('settings', settings);
+        }
+
+        /**
+         * Update settings with data-* attributes
+         */
+
+    }, {
+        key: 'updateSettings',
+        value: function updateSettings() {
+            var self = this;
+            var data = self.$element.data();
+
+            self.settings = {};
+            Object(__WEBPACK_IMPORTED_MODULE_0__each__["a" /* default */])(data, function (v, k) {
+                self.settings[k] = v;
+            });
+        }
+
+        /**
+         * 
+         */
+
+    }, {
+        key: 'render',
+        value: function render() {
+            Object(__WEBPACK_IMPORTED_MODULE_1__initialize_select2__["a" /* default */])(this.$element, this.settings);
+        }
+    }]);
+
+    return Autocomplete;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Autocomplete);
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_select2__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_select2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_select2__);
+
+
+var $element = null;
+var settings = {};
+
+/**
+ * 
+ * @param {*} params 
+ */
+function prepareAjaxData(params) {
+    var data = {};
+    if (settings.filterBy) {
+        data[settings.filterBy] = params.term;
+    }
+    return data;
+}
+
+/**
+ * 
+ * @param {*} data 
+ */
+function processResults(data) {
+    var result = null;
+
+    if (settings.responseData) {
+        result = data[settings.responseData];
+    } else {
+        result = data;
+    }
+
+    return {
+        results: $.map(result, function (item) {
+            item.id = item[settings.optionValue];
+            item.text = item[settings.optionText];
+            return item;
+        })
+    };
+}
+
+/**
+ * 
+ */
+function createAjaxConf() {
+    return {
+        url: settings.requestUrl,
+        delay: settings.ajaxDelay,
+        cache: settings.ajaxCache,
+        dataType: 'json',
+        data: prepareAjaxData,
+        processResults: processResults
+    };
+}
+
+/**
+ * 
+ */
+function render() {
+    $element.html($('<option>', {
+        value: '',
+        text: ''
+    }));
+
+    $element.select2({
+        tags: settings.withTags,
+        minimumInputLength: 2, // minimun chars to start request
+        ajax: createAjaxConf(),
+        insertTag: function insertTag(data, tag) {
+            // TODO: improve if it possible
+            if (data.length > 0) {
+                data.unshift(tag);
+            }
+        }
+    });
+}
+
+/**
+ * 
+ * @param jQuery  $el $(select-tag)
+ * @param Object sett - Settings
+ */
+function initializeSelect2($el) {
+    var sett = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    $element = $el;
+    settings = sett;
+    render();
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (initializeSelect2);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+
+/***/ })
+/******/ ]);
+});

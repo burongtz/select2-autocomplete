@@ -1,3 +1,5 @@
+import select2 from 'select2';
+
 let $element = null;
 let settings = {};
 
