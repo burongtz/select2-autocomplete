@@ -26,5 +26,5 @@ mix.webpackConfig(config);
 mix.js('src/js/select2-autocomplete.js', 'dist/js')
    .setPublicPath('dist');
 
-mix.copyDirectory('node_modules/select2', 'dist/examples/vendor/select2')
-    .copyDirectory('node_modules/jquery', 'dist/examples/vendor/jquery');
+mix.copyDirectory('node_modules/select2', 'examples/vendor/select2')
+    .copyDirectory('node_modules/jquery', 'examples/vendor/jquery');
