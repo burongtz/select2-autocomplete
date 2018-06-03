@@ -4,8 +4,8 @@ let $element = null;
 let settings = {};
 
 /**
- * 
- * @param {*} params 
+ * Ajax data add param to filter.
+ * @param Object params 
  */
 function prepareAjaxData(params) {
     var data = {};
@@ -16,8 +16,8 @@ function prepareAjaxData(params) {
 }
 
 /**
- * 
- * @param {*} data 
+ * Pocess results.
+ * @param JSON data 
  */
 function processResults(data) {
     var result = null;
@@ -38,7 +38,7 @@ function processResults(data) {
 }
 
 /**
- * 
+ * Create configuration for AJAX of Select2.
  */
 function createAjaxConf() {
     return {
@@ -52,23 +52,38 @@ function createAjaxConf() {
 }
 
 /**
- * 
+ * Delete options and add an empty option.
+ * TODO: improve, this was added as hack to trigger onchange.
  */
-function render() {
+function clearOptions() {
     $element.html($('<option>', {
         value: '',
         text: ''
     }));
+}
+
+/**
+ * Show "Not Found if empty data".
+ * @param JSON data 
+ * @param Object tag 
+ */
+function insertTag(data, tag) {
+    if (data.length > 0) {
+        data.unshift(tag);
+    }
+}
+
+/**
+ * initialize Select2.
+ */
+function render() {
+    clearOptions();
 
     $element.select2({
         tags: settings.withTags,
         minimumInputLength: 2, // minimun chars to start request
         ajax: createAjaxConf(),
-        insertTag: (data, tag) => { // TODO: improve if it possible
-            if (data.length > 0) {
-                data.unshift(tag);
-            }
-        }
+        insertTag: insertTag
     });
 }
 

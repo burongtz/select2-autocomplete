@@ -31,7 +31,7 @@
  * Use when records are inside other key { 'data' : {} }
  */
 
- import each from './each';
+ import each from './helpers/each';
  import Autocomplete from './Autocomplete'
 
 (function ($) {

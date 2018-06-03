@@ -1,4 +1,4 @@
-import each from './each';
+import each from './helpers/each';
 import initializeSelect2 from './initialize-select2';
 
 class Autocomplete {
@@ -32,7 +32,7 @@ class Autocomplete {
     }
 
     /**
-     * 
+     * Load lib Select2
      */
     render() {
        initializeSelect2(this.$element, this.settings);
