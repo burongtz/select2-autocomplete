@@ -1,6 +1,6 @@
 {
   "name": "select2-autocomplete",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A jQuery plugin to autocomplete, useful in searches.",
   "main": "index.js",
   "scripts": {
